@@ -1,12 +1,39 @@
-node {
+pipeline{
 
-    checkout scm
-    
-    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+	agent any
 
-        def customImage = docker.build("newscape/demoproduct")
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhubstdin')
+	}
 
-        /* Push the container to the custom Registry */
-        customImage.push()
-    }
+	stages {
+
+		stage('Build') {
+
+			steps {
+				sh 'docker build -t newscape/productimg:latest .'
+			}
+		}
+
+		stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push newscape/productimg:latest'
+			}
+		}
+	}
+
+	post {
+		always {
+			sh 'docker logout'
+		}
+	}
+
 }
