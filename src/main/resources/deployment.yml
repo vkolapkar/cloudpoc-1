@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product
+  labels:
+    app: product
+    version: v1
+spec:
+  selector:
+    matchlabels:
+      app: product
+      version: v1
+  replicas: 1
+  template:
+    matadata:
+      labels:
+        app: product
+        version: v1
+    spec:
+      containers:
+        - name: product
+          image: kashafdocker/newscape-product:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
