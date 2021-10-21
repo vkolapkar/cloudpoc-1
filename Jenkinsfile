@@ -12,7 +12,7 @@ pipeline{
 
 			steps {
 				sh 'mvn clean install'
-				sh 'docker build -t newscape/productimg:latest .'
+				sh 'docker build -t akashnewscapepune/productimg:latest .'
 			}
 		}
 
@@ -26,7 +26,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push newscape/productimg:latest'
+				sh 'docker push akashnewscapepune/productimg:latest'
 			}
 		}
 	}
