@@ -11,6 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
+				sh 'mvn clean install'
 				sh 'docker build -t newscape/productimg:latest .'
 			}
 		}
