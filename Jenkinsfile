@@ -34,7 +34,8 @@ pipeline{
 			steps{
 				sshagent(['k8s-jenkins'])
 				{
-					sh 'scp -r -o StrictHostKeyChecking=no /src/main/resources/deployment.yaml root@10.14.21.80:/root/Desktop/dockerImages/'
+					sh 'pwd'
+					sh 'scp -r -o StrictHostKeyChecking=no /src/main/resources/deployment.yaml root@10.14.21.80:/root/Desktop/dockerImages'
 					
 					script{
 						try{
