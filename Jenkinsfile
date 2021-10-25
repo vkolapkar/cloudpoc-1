@@ -32,8 +32,8 @@ pipeline{
 		stage('Deploy to K8s')
 		{
 			steps{
-					sh 'pwd'
-					sh 'scp -r -o StrictHostKeyChecking=no deployment.yml root@10.14.21.80:/root/Desktop/dockerImages'
+					sh 'kubectl get pod'
+					//sh 'scp -r -o StrictHostKeyChecking=no deployment.yml root@10.14.21.80:/root/Desktop/dockerImages'
 					
 					script{
 						try{
