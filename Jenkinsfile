@@ -32,10 +32,8 @@ pipeline{
 		stage('Deploy to K8s')
 		{
 			steps{
-				sshagent(['k8s-jenkins'])
-				{
 					sh 'pwd'
-					sh 'scp -r -o StrictHostKeyChecking=no /src/main/resources/deployment.yml root@10.14.21.80:/Desktop/dockerImages'
+					sh 'scp -r -o StrictHostKeyChecking=no deployment.yml root@10.14.21.80:/root/Desktop/dockerImages'
 					
 					script{
 						try{
@@ -46,7 +44,6 @@ pipeline{
 
 							}
 					}
-				}
 			}
 		}
 		
