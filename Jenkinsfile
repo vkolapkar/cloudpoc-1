@@ -37,11 +37,11 @@ pipeline{
 					
 					script{
 						try{
-							sh 'kubectl apply -f deployment.yaml --kubeconfig=/root/.kube/kube.yaml'
+							sh 'sudo kubectl apply -f deployment.yaml'
 
 							}catch(error)
 							{
-								sh 'kubectl create -f deployment.yaml'
+								sh 'sudo kubectl create -f deployment.yaml'
 
 							}
 					}
