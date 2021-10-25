@@ -37,10 +37,11 @@ pipeline{
 					
 					script{
 						try{
-							//sh 'ssh root@10.14.21.80 kubectl apply -f /root/Desktop/dockerImages/deployment.yaml --kubeconfig=/root/.kube/kube.yaml'
+							sh 'kubectl apply -f deployment.yaml --kubeconfig=/root/.kube/kube.yaml'
 
 							}catch(error)
 							{
+								sh 'kubectl create -f deployment.yaml'
 
 							}
 					}
