@@ -14,6 +14,7 @@ public class ProductService {
 		prods.add(new Product(1, "Laptop", 85000.00, 0, "", "", null));
 		prods.add(new Product(2, "Office Chair", 5500.00, 0, "", "", null));
 		prods.add(new Product(3, "Desktop", 95000.00, 0, "", "", null));
+		prods.add(new Product(4, "CPU", 15000.00, 0, "", "", null));
 	}
 	
 	public List<Product> getAll() {
