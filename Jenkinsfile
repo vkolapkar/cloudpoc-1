@@ -12,7 +12,7 @@ pipeline{
 
 			steps {
 				sh 'mvn clean install'
-				sh 'docker build -t akashnewscapepune/productimg:latest .'
+				sh 'docker build -t kvinayak0705/productimg:latest .'
 			}
 		}
 
@@ -26,7 +26,7 @@ pipeline{
 		stage('Push Image To Docker Hub') {
 
 			steps {
-				sh 'docker push akashnewscapepune/productimg:latest'
+				sh 'docker push kvinayak0705/productimg:latest'
 			}
 		}
 		stage('Deploy to K8s')
